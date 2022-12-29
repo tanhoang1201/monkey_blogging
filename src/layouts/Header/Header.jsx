@@ -1,30 +1,20 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+
 import images from "../../assets/images";
 import Button from "../../components/Button";
-import { SearchIcon } from "../../components/icons";
+import { SearchIcon, UserIcon } from "../../components/icons";
 import Home from "../../pages/Home";
+import { navigation } from "../../configs/routes.config";
+import Popper from "../../components/Popper";
+import Menu from "../Menu";
 
-const navigation = [
-	{
-		title: "Home",
-		to: "/",
-		element: <Home />,
-	},
-	{
-		title: "Blog",
-		to: "/blog",
-		// element: <Blog />,
-	},
-	{
-		title: "Contact",
-		to: "/contact",
-		// element: <Contact />,
-	},
-];
-
-const Header = () => {
+const Header = ({ className }) => {
+	const currentUser = useSelector((state) => state.auth.userLogin);
+	useEffect(() => {}, []);
 	return (
-		<header className="flex items-center py-2">
+		<header className={`flex items-center py-6 ${className}`}>
 			<Link>
 				<img src={images.logo} alt="" className="w-14 object-cover" />
 			</Link>
@@ -47,9 +37,25 @@ const Header = () => {
 					<SearchIcon />
 				</button>
 			</div>
-			<Button elementType={Link} to="/signin" className={"h-[58px] leading-[58px]"}>
-				Sign In
-			</Button>
+			{currentUser ? (
+				<div className="flex items-center gap-2">
+					<h2 className="font-semibold text-primary text-lg">Hi, {currentUser.name}</h2>
+					<Popper content={<Menu />} offset={[12, 10]} placement="bottom-end">
+						<button className="p-1 rounded-full hover:bg-light transition-all">
+							<UserIcon />
+						</button>
+					</Popper>
+				</div>
+			) : (
+				<>
+					<Button elementType={Link} to="/signin" className="h-[58px] mr-5">
+						Sign In
+					</Button>
+					<Button elementType={Link} to="/signup" className="h-[58px]">
+						Sign Up
+					</Button>
+				</>
+			)}
 		</header>
 	);
 };

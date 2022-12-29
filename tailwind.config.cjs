@@ -4,13 +4,16 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				primary: ["Poppins", "sans-serif"],
+				primary: ["Montserrat", "sans-serif"],
 			},
 			colors: {
 				primary: "#2EBAC1",
 				border: "#00B4AA",
 				light: "#E7ECF3",
 				dark: "#292D32",
+			},
+			boxShadow: {
+				sd1: "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;",
 			},
 		},
 	},

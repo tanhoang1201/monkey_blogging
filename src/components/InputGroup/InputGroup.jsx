@@ -38,6 +38,7 @@ const InputGroup = ({ label, type = "text", register, error, ...props }) => {
 InputGroup.propTypes = {
 	label: PropTypes.string.isRequired,
 	type: PropTypes.string,
+	error: PropTypes.string,
 };
 
 export default InputGroup;

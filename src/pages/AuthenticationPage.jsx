@@ -1,8 +1,12 @@
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import images from "../assets/images";
 
 const AuthenticationPage = ({ children }) => {
+	useEffect(() => {
+		document.title = "Authentication";
+	});
 	return (
 		<div>
 			<div className="w-[832px] mx-auto py-6 px-4">

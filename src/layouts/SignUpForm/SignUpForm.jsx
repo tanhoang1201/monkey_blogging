@@ -1,14 +1,17 @@
-import Button from "../../components/Button";
-import InputGroup from "../../components/InputGroup/InputGroup";
-import Loading from "../../components/Loading/Loading";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { addDoc, collection } from "firebase/firestore";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { toast } from "react-toastify";
-import { db, auth } from "../../configs/firebase.config";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import { db, auth } from "../../configs/firebase.config";
+import Button from "../../components/Button";
+import InputGroup from "../../components/InputGroup/InputGroup";
+import Loading from "../../components/Loading/Loading";
+import { useEffect } from "react";
 
 const schema = yup.object({
 	name: yup.string().required().min(6),
@@ -24,6 +27,7 @@ const schema = yup.object({
 });
 
 const SignUpForm = () => {
+	const navigate = useNavigate();
 	const userInstance = collection(db, "users");
 	const {
 		register,
@@ -51,6 +55,7 @@ const SignUpForm = () => {
 			toast.success("Registers successfully!!!", {
 				icon: "😍",
 			});
+			navigate("/");
 		} catch (error) {
 			toast.warn(error.code, { icon: "❌" });
 		}
@@ -88,10 +93,11 @@ const SignUpForm = () => {
 			</p>
 
 			<Button
-				className="w-max m-auto flex items-center gap-3 h-[64px] mt-8 text-2xl py-4"
+				className="w-max m-auto flex items-center gap-3"
+				size="h-[64px]"
 				disabled={isSubmitting}
 			>
-				{isSubmitting && <Loading className={"border-white w-8 h-8"} />}
+				{isSubmitting && <Loading className="border-white w-8 h-8" />}
 				Sign Up
 			</Button>
 		</form>
