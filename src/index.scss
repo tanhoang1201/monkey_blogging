@@ -11,3 +11,7 @@
 .Toastify__toast-body {
 	font-weight: 600;
 }
+
+.MuiAutocomplete-option {
+	@apply text-primary font-semibold;
+}

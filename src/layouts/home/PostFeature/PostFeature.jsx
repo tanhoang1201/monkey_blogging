@@ -1,17 +1,24 @@
-import PostTitle from "../../../components/PostTitle/PostTitle";
-import PostFeatureItem from "./PostDeatureItem";
+import PropTypes from "prop-types";
 
-const PostFeature = ({ className }) => {
+import PostTitle from "../../../components/SectionHeading/SectionHeading";
+import PostFeatureItem from "./PostFeatureItem";
+
+const PostFeature = ({ className, data }) => {
 	return (
 		<section className={`${className}`}>
 			<PostTitle className="">Feature</PostTitle>
 			<div className="grid grid-cols-3 gap-10">
-				<PostFeatureItem />
-				<PostFeatureItem />
-				<PostFeatureItem />
+				{data.map((value) => (
+					<PostFeatureItem key={value.id} value={value} />
+				))}
 			</div>
 		</section>
 	);
+};
+
+PostFeatureItem.propTypes = {
+	className: PropTypes.string,
+	data: PropTypes.array,
 };
 
 export default PostFeature;

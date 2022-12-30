@@ -1,6 +1,6 @@
-import PostContent from "../../../components/Post/PostContent";
+import PostContent from "../../../components/Post/PostTitle";
 import PostImg from "../../../components/Post/PostImg";
-import PostLabel from "../../../components/Post/PostLabel";
+import PostLabel from "../../../components/Post/PostCategory";
 import PostMore from "../../../components/Post/PostMore";
 
 const PostNewestItem = () => {

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 const PostImg = ({ className, src }) => {
-	return <img src={src} alt="" className={`${className}`} />;
+	return <img src={src} alt="" className={`object-cover ${className}`} />;
 };
 
 PostImg.propTypes = {
