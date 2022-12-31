@@ -3,15 +3,20 @@
 @tailwind utilities;
 
 @layer base {
-	body {
-		@apply font-primary;
-	}
+    body {
+        @apply font-primary;
+
+        .isAddPost.MuiCircularProgress-root {
+            height: 70px !important;
+            width: 70px !important;
+        }
+    }
 }
 
 .Toastify__toast-body {
-	font-weight: 600;
+    font-weight: 600;
 }
 
 .MuiAutocomplete-option {
-	@apply text-primary font-semibold;
+    @apply text-primary font-semibold;
 }
